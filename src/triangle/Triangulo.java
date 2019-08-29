@@ -13,14 +13,31 @@ public class Triangulo {
 		this.lado2 = lado2;
 		this.lado3 = lado3;
 	}
-
+	
 	public void indicarQueTrianguloEs() {
 		if(this.esEquilatero())
 			System.out.println("El triangulo es equilatero");
-		else if (this.esEscaleno())
-			System.out.println("El triangulo es escaleno");
-		else
-			System.out.println("El triangulo es isosceles");
+		else {
+			if(this.esUnTriangulo()) {
+				if(this.esEscaleno())
+					System.out.println("El triangulo es escaleno");
+				else
+					System.out.println("El triangulo es isosceles");
+			}
+			else
+				System.out.println("No es un triangulo");
+		}
+		
+	}
+	
+	public boolean esUnTriangulo() {
+		if(this.lado1 >= this.lado2 && this.lado1 >= this.lado3 && (this.lado2+this.lado3) > this.lado1)
+			return true;
+		if(this.lado2 >= this.lado1 && this.lado2 >= this.lado3 && (this.lado1+this.lado3) > this.lado2)
+			return true;
+		if(this.lado3 >= this.lado1 && this.lado3 >= this.lado2 && (this.lado1+this.lado2) > this.lado3)
+			return true;
+		return false;
 	}
 	
 	public boolean esEquilatero() {
